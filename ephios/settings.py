@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 from email.utils import getaddresses
+from importlib import metadata
 
 import environ
 
@@ -68,6 +69,12 @@ INSTALLED_APPS = [
     "ephios.plugins.pages",
     "dynamic_preferences",  # must come after our apps to collect preferences
 ]
+
+PLUGINS = []
+for ep in metadata.entry_points().get("ephios.plugins", []):
+    PLUGINS.append(ep.module)
+    INSTALLED_APPS.append(ep.module)
+print(f"Installed plugins: {','.join(PLUGINS)}")
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
