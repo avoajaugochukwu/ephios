@@ -1,6 +1,7 @@
 from typing import TYPE_CHECKING
 
 import pytz
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.db import models, transaction
 from django.db.models import (
@@ -21,7 +22,6 @@ from dynamic_preferences.models import PerInstancePreferenceModel
 from guardian.shortcuts import assign_perm
 from polymorphic.models import PolymorphicModel
 
-from ephios import settings
 from ephios.extra.json import CustomJSONDecoder, CustomJSONEncoder
 
 if TYPE_CHECKING:

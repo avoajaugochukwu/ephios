@@ -1,6 +1,7 @@
 import io
 
 import pytz
+from django.conf import settings
 from django.http import FileResponse
 from django.utils import formats
 from django.utils.translation import gettext as _
@@ -11,7 +12,6 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.units import cm
 from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer, Table
 
-from ephios import settings
 from ephios.event_management.models import Event
 from ephios.extra.permissions import CustomPermissionRequiredMixin
 
